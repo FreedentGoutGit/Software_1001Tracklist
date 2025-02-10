@@ -1,6 +1,6 @@
 # 1001-tracklists-crawler
 ## 1-Installation
-1 - Clone the git locally
+1 - Clone the git locally\
 2 - pip install --user requests beautifulsoup4 yt-dlp
 3 - Ready to go
 
