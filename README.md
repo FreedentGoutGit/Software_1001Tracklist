@@ -9,9 +9,9 @@ Just download the latest release
 ## 1-Want to modify it yourself?
 1 - Clone the git locally\
 2 - Create and install a new conda env with:
-'conda env create -f environment.yml'
+`conda env create -f environment.yml`
 3 - Activate and run
-'conda activate playlist-downloader'
+`conda activate playlist-downloader`
 
 ## 2-Usage guide
 1 - Run scrapper_bot.py\
