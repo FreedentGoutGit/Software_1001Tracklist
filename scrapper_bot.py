@@ -14,16 +14,21 @@ def scrape_tracklist(url):
         'Accept-Language': 'en-US,en;q=0.9',
         'Referer': 'https://www.google.com'
     }
-    response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    tracks = []
-    for item in soup.select('.tlpItem'):
-        track_value = item.find('span', class_='trackValue')
-        if track_value:
-            track_name = track_value.get_text(strip=True)
-            tracks.append(track_name)
-            print(f"Track Name: {track_name}")
-    return tracks
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, 'html.parser')
+        tracks = []
+        for item in soup.select('.tlpItem'):
+            track_value = item.find('span', class_='trackValue')
+            if track_value:
+                track_name = track_value.get_text(strip=True)
+                tracks.append(track_name)
+                print(f"Track Name: {track_name}")
+        return tracks
+    except requests.RequestException as e:
+        print(f"Error scraping {url}: {e}")
+        return []
 
 # Function to get tracks from YouTube playlist
 def get_youtube_playlist_tracks(url):
