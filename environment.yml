@@ -1,0 +1,13 @@
+name: playlist-downloader
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - ffmpeg
+  - pip
+  - pip:
+    - requests
+    - beautifulsoup4
+    - yt-dlp
+    - customtkinter
