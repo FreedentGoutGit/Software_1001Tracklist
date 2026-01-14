@@ -52,22 +52,12 @@ jobs:
       run: pyinstaller --onefile --windowed scrapper_bot.py
 
     - name: Create Release
-      uses: actions/create-release@v1
-      id: create_release
+      uses: softprops/action-gh-release@v1
       with:
         tag_name: v${{ github.run_number }}
-        release_name: Release v${{ github.run_number }}
+        name: Release v${{ github.run_number }}
         draft: false
         prerelease: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/scrapper_bot.exe
-        asset_name: PlaylistDownloader.exe
-        asset_content_type: application/octet-stream
+        files: ./dist/scrapper_bot.exe
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
