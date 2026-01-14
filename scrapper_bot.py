@@ -132,199 +132,200 @@ def browse_folder():
         folder_entry.delete(0, "end")
         folder_entry.insert(0, folder)
 
-# Set appearance
-ctk.set_appearance_mode("dark")
+if __name__ == "__main__":
+    # Set appearance
+    ctk.set_appearance_mode("dark")
 
-# Main window
-app = ctk.CTk()
-app.title("Playlist Downloader")
-app.geometry("700x650")
-app.resizable(False, False)
+    # Main window
+    app = ctk.CTk()
+    app.title("Playlist Downloader")
+    app.geometry("700x650")
+    app.resizable(False, False)
 
-# Main frame
-main_frame = ctk.CTkFrame(app, fg_color="#1a1a1a")
-main_frame.pack(fill="both", expand=True, padx=0, pady=0)
+    # Main frame
+    main_frame = ctk.CTkFrame(app, fg_color="#1a1a1a")
+    main_frame.pack(fill="both", expand=True, padx=0, pady=0)
 
-# Header
-header_frame = ctk.CTkFrame(main_frame, fg_color="#000000", corner_radius=0)
-header_frame.pack(fill="x", padx=0, pady=0)
+    # Header
+    header_frame = ctk.CTkFrame(main_frame, fg_color="#000000", corner_radius=0)
+    header_frame.pack(fill="x", padx=0, pady=0)
 
-title_label = ctk.CTkLabel(
-    header_frame,
-    text="Playlist Downloader",
-    font=("Helvetica", 28, "bold"),
-    text_color="white"
-)
-title_label.pack(pady=20, padx=20)
+    title_label = ctk.CTkLabel(
+        header_frame,
+        text="Playlist Downloader",
+        font=("Helvetica", 28, "bold"),
+        text_color="white"
+    )
+    title_label.pack(pady=20, padx=20)
 
-subtitle_label = ctk.CTkLabel(
-    header_frame,
-    text="Download high-quality MP3s from 1001 Tracklists or YouTube",
-    font=("Helvetica", 11),
-    text_color="#b0b0b0"
-)
-subtitle_label.pack(pady=(0, 15), padx=20)
+    subtitle_label = ctk.CTkLabel(
+        header_frame,
+        text="Download high-quality MP3s from 1001 Tracklists or YouTube",
+        font=("Helvetica", 11),
+        text_color="#b0b0b0"
+    )
+    subtitle_label.pack(pady=(0, 15), padx=20)
 
-# Content frame
-content_frame = ctk.CTkFrame(main_frame, fg_color="#1a1a1a")
-content_frame.pack(fill="both", expand=True, padx=30, pady=30)
+    # Content frame
+    content_frame = ctk.CTkFrame(main_frame, fg_color="#1a1a1a")
+    content_frame.pack(fill="both", expand=True, padx=30, pady=30)
 
-# Top options frame for dropdowns
-options_frame = ctk.CTkFrame(content_frame, fg_color="transparent")
-options_frame.pack(fill="x", pady=(0, 25))
+    # Top options frame for dropdowns
+    options_frame = ctk.CTkFrame(content_frame, fg_color="transparent")
+    options_frame.pack(fill="x", pady=(0, 25))
 
-# Source selection
-source_label = ctk.CTkLabel(
-    options_frame,
-    text="Source",
-    font=("Helvetica", 10, "bold"),
-    text_color="#e0e0e0"
-)
-source_label.grid(row=0, column=0, sticky="w", padx=(0, 10))
+    # Source selection
+    source_label = ctk.CTkLabel(
+        options_frame,
+        text="Source",
+        font=("Helvetica", 10, "bold"),
+        text_color="#e0e0e0"
+    )
+    source_label.grid(row=0, column=0, sticky="w", padx=(0, 10))
 
-source_var = ctk.StringVar(value="1001 Tracklists")
-source_menu = ctk.CTkOptionMenu(
-    options_frame,
-    values=["1001 Tracklists", "YouTube Playlist"],
-    variable=source_var,
-    fg_color="#2a2a2a",
-    button_color="#ffffff",
-    button_hover_color="#e0e0e0",
-    text_color="#000000",
-    font=("Helvetica", 9, "bold"),
-    dropdown_font=("Helvetica", 9),
-    dropdown_fg_color="#2a2a2a",
-    dropdown_hover_color="#3a3a3a",
-    dropdown_text_color="white",
-    width=140
-)
-source_menu.grid(row=0, column=1, sticky="w", padx=(0, 20))
+    source_var = ctk.StringVar(value="1001 Tracklists")
+    source_menu = ctk.CTkOptionMenu(
+        options_frame,
+        values=["1001 Tracklists", "YouTube Playlist"],
+        variable=source_var,
+        fg_color="#2a2a2a",
+        button_color="#ffffff",
+        button_hover_color="#e0e0e0",
+        text_color="#000000",
+        font=("Helvetica", 9, "bold"),
+        dropdown_font=("Helvetica", 9),
+        dropdown_fg_color="#2a2a2a",
+        dropdown_hover_color="#3a3a3a",
+        dropdown_text_color="white",
+        width=140
+    )
+    source_menu.grid(row=0, column=1, sticky="w", padx=(0, 20))
 
-# Quality selection
-quality_label = ctk.CTkLabel(
-    options_frame,
-    text="Quality",
-    font=("Helvetica", 10, "bold"),
-    text_color="#e0e0e0"
-)
-quality_label.grid(row=0, column=2, sticky="w", padx=(0, 10))
+    # Quality selection
+    quality_label = ctk.CTkLabel(
+        options_frame,
+        text="Quality",
+        font=("Helvetica", 10, "bold"),
+        text_color="#e0e0e0"
+    )
+    quality_label.grid(row=0, column=2, sticky="w", padx=(0, 10))
 
-quality_var = ctk.StringVar(value="320")
-quality_menu = ctk.CTkOptionMenu(
-    options_frame,
-    values=["128", "256", "320", "Best"],
-    variable=quality_var,
-    fg_color="#2a2a2a",
-    button_color="#ffffff",
-    button_hover_color="#e0e0e0",
-    text_color="#000000",
-    font=("Helvetica", 9, "bold"),
-    dropdown_font=("Helvetica", 9),
-    dropdown_fg_color="#2a2a2a",
-    dropdown_hover_color="#3a3a3a",
-    dropdown_text_color="white",
-    width=100
-)
-quality_menu.grid(row=0, column=3, sticky="w", padx=(0, 30))
+    quality_var = ctk.StringVar(value="320")
+    quality_menu = ctk.CTkOptionMenu(
+        options_frame,
+        values=["128", "256", "320", "Best"],
+        variable=quality_var,
+        fg_color="#2a2a2a",
+        button_color="#ffffff",
+        button_hover_color="#e0e0e0",
+        text_color="#000000",
+        font=("Helvetica", 9, "bold"),
+        dropdown_font=("Helvetica", 9),
+        dropdown_fg_color="#2a2a2a",
+        dropdown_hover_color="#3a3a3a",
+        dropdown_text_color="white",
+        width=100
+    )
+    quality_menu.grid(row=0, column=3, sticky="w", padx=(0, 30))
 
-# Download button on the right
-start_button = ctk.CTkButton(
-    options_frame,
-    text="Download",
-    command=start_download,
-    fg_color="#000000",
-    hover_color="#1a1a1a",
-    text_color="white",
-    font=("Helvetica", 10, "bold"),
-    corner_radius=4,
-    height=32,
-    width=120,
-    border_width=1,
-    border_color="#555555"
-)
-start_button.grid(row=0, column=4, sticky="e", padx=(20, 0))
+    # Download button on the right
+    start_button = ctk.CTkButton(
+        options_frame,
+        text="Download",
+        command=start_download,
+        fg_color="#000000",
+        hover_color="#1a1a1a",
+        text_color="white",
+        font=("Helvetica", 10, "bold"),
+        corner_radius=4,
+        height=32,
+        width=120,
+        border_width=1,
+        border_color="#555555"
+    )
+    start_button.grid(row=0, column=4, sticky="e", padx=(20, 0))
 
-# Divider
-divider = ctk.CTkFrame(content_frame, fg_color="#2a2a2a", height=1)
-divider.pack(fill="x", pady=(0, 25))
+    # Divider
+    divider = ctk.CTkFrame(content_frame, fg_color="#2a2a2a", height=1)
+    divider.pack(fill="x", pady=(0, 25))
 
-# URL input
-url_label = ctk.CTkLabel(
-    content_frame,
-    text="Playlist URL",
-    font=("Helvetica", 12, "bold"),
-    text_color="white"
-)
-url_label.pack(anchor="w", pady=(0, 8))
+    # URL input
+    url_label = ctk.CTkLabel(
+        content_frame,
+        text="Playlist URL",
+        font=("Helvetica", 12, "bold"),
+        text_color="white"
+    )
+    url_label.pack(anchor="w", pady=(0, 8))
 
-url_entry = ctk.CTkEntry(
-    content_frame,
-    placeholder_text="https://...",
-    fg_color="#2a2a2a",
-    border_color="#444444",
-    text_color="white",
-    placeholder_text_color="#666666",
-    font=("Helvetica", 10),
-    border_width=2
-)
-url_entry.pack(fill="x", pady=(0, 20), ipady=8)
+    url_entry = ctk.CTkEntry(
+        content_frame,
+        placeholder_text="https://...",
+        fg_color="#2a2a2a",
+        border_color="#444444",
+        text_color="white",
+        placeholder_text_color="#666666",
+        font=("Helvetica", 10),
+        border_width=2
+    )
+    url_entry.pack(fill="x", pady=(0, 20), ipady=8)
 
-# Folder selection
-folder_label = ctk.CTkLabel(
-    content_frame,
-    text="Save Folder",
-    font=("Helvetica", 12, "bold"),
-    text_color="white"
-)
-folder_label.pack(anchor="w", pady=(0, 8))
+    # Folder selection
+    folder_label = ctk.CTkLabel(
+        content_frame,
+        text="Save Folder",
+        font=("Helvetica", 12, "bold"),
+        text_color="white"
+    )
+    folder_label.pack(anchor="w", pady=(0, 8))
 
-folder_frame = ctk.CTkFrame(content_frame, fg_color="transparent")
-folder_frame.pack(fill="x", pady=(0, 25))
+    folder_frame = ctk.CTkFrame(content_frame, fg_color="transparent")
+    folder_frame.pack(fill="x", pady=(0, 25))
 
-folder_entry = ctk.CTkEntry(
-    folder_frame,
-    placeholder_text=str(Path.home() / "Downloads" / "Playlist"),
-    fg_color="#2a2a2a",
-    border_color="#444444",
-    text_color="white",
-    placeholder_text_color="#666666",
-    font=("Helvetica", 10),
-    border_width=2
-)
-folder_entry.pack(side="left", fill="both", expand=True, ipady=8)
+    folder_entry = ctk.CTkEntry(
+        folder_frame,
+        placeholder_text=str(Path.home() / "Downloads" / "Playlist"),
+        fg_color="#2a2a2a",
+        border_color="#444444",
+        text_color="white",
+        placeholder_text_color="#666666",
+        font=("Helvetica", 10),
+        border_width=2
+    )
+    folder_entry.pack(side="left", fill="both", expand=True, ipady=8)
 
-browse_button = ctk.CTkButton(
-    folder_frame,
-    text="Browse",
-    command=browse_folder,
-    fg_color="#ffffff",
-    hover_color="#e0e0e0",
-    text_color="#000000",
-    font=("Helvetica", 10, "bold"),
-    width=80,
-    border_width=1,
-    border_color="#cccccc"
-)
-browse_button.pack(side="right", padx=(10, 0), pady=0)
+    browse_button = ctk.CTkButton(
+        folder_frame,
+        text="Browse",
+        command=browse_folder,
+        fg_color="#ffffff",
+        hover_color="#e0e0e0",
+        text_color="#000000",
+        font=("Helvetica", 10, "bold"),
+        width=80,
+        border_width=1,
+        border_color="#cccccc"
+    )
+    browse_button.pack(side="right", padx=(10, 0), pady=0)
 
-# Progress bar
-progress_bar = ctk.CTkProgressBar(
-    content_frame,
-    fg_color="#2a2a2a",
-    progress_color="#ffffff",
-    corner_radius=4,
-    height=6
-)
-progress_bar.pack(fill="x", pady=(0, 15))
-progress_bar.set(0)
+    # Progress bar
+    progress_bar = ctk.CTkProgressBar(
+        content_frame,
+        fg_color="#2a2a2a",
+        progress_color="#ffffff",
+        corner_radius=4,
+        height=6
+    )
+    progress_bar.pack(fill="x", pady=(0, 15))
+    progress_bar.set(0)
 
-# Status label
-status_label = ctk.CTkLabel(
-    content_frame,
-    text="Ready to download",
-    font=("Helvetica", 10),
-    text_color="#888888"
-)
-status_label.pack(anchor="w")
+    # Status label
+    status_label = ctk.CTkLabel(
+        content_frame,
+        text="Ready to download",
+        font=("Helvetica", 10),
+        text_color="#888888"
+    )
+    status_label.pack(anchor="w")
 
-app.mainloop()
+    app.mainloop()
