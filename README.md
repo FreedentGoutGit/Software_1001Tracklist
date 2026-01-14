@@ -1,5 +1,7 @@
 ![1001 Tracklists Crawler](./media/UI.png)
 
+As a  DJ, you probably spend way too much time downloading your favourite songs from online playlists one by one. Rest assured! It's all here in this simple playlist downloader. Go mix!
+
 # 1001-tracklists-crawler
 ## 1-Installation
 1 - Clone the git locally\
